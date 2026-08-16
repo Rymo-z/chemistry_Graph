@@ -3,7 +3,7 @@
 面向化工企业一线工人的 **7×24 安全生产辅助系统**，数据不出厂、可离线部署。
 法规问答 · 拍照识隐患 · 作业票审核 三大能力，知识图谱(Neo4j) 主查 + 向量检索(FAISS) 兜底。
 
-![CI](https://img.shields.io/github/actions/workflow/status/<your-org>/chemistry_Graph/ci.yml?branch=main&label=CI)
+![CI](https://img.shields.io/github/actions/workflow/status/Rymo-z/chemistry_Graph/ci.yml?branch=main&label=CI)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
