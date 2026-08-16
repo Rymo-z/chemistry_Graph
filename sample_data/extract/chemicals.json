@@ -1,0 +1,248 @@
+{
+  "source": "sample_chemicals",
+  "entities": [
+    {
+      "name": "甲醇",
+      "type": "Chemical",
+      "aliases": [
+        "木醇",
+        "木精"
+      ],
+      "attributes": {
+        "cas_no": "67-56-1",
+        "category": "危险化学品",
+        "summary": "甲醇（CAS 67-56-1），危险化学品。"
+      }
+    },
+    {
+      "name": "乙醇[无水]",
+      "type": "Chemical",
+      "aliases": [
+        "无水酒精"
+      ],
+      "attributes": {
+        "cas_no": "64-17-5",
+        "category": "危险化学品",
+        "summary": "乙醇[无水]（CAS 64-17-5），危险化学品。"
+      }
+    },
+    {
+      "name": "甲醛溶液",
+      "type": "Chemical",
+      "aliases": [
+        "福尔马林溶液"
+      ],
+      "attributes": {
+        "cas_no": "50-00-0",
+        "category": "危险化学品",
+        "summary": "甲醛溶液（CAS 50-00-0），危险化学品。"
+      }
+    },
+    {
+      "name": "氨",
+      "type": "Chemical",
+      "aliases": [
+        "液氨",
+        "氨气"
+      ],
+      "attributes": {
+        "cas_no": "7664-41-7",
+        "category": "危险化学品",
+        "summary": "氨（CAS 7664-41-7），危险化学品。"
+      }
+    },
+    {
+      "name": "一氧化碳",
+      "type": "Chemical",
+      "aliases": [],
+      "attributes": {
+        "cas_no": "630-08-0",
+        "category": "危险化学品",
+        "summary": "一氧化碳（CAS 630-08-0），危险化学品。"
+      }
+    },
+    {
+      "name": "氰化钾",
+      "type": "Chemical",
+      "aliases": [
+        "山奈钾"
+      ],
+      "attributes": {
+        "cas_no": "151-50-8",
+        "category": "剧毒化学品",
+        "summary": "氰化钾（CAS 151-50-8），剧毒化学品，按剧毒目录管理。"
+      }
+    },
+    {
+      "name": "三氧化二砷",
+      "type": "Chemical",
+      "aliases": [
+        "白砒",
+        "砒霜",
+        "亚砷酸酐"
+      ],
+      "attributes": {
+        "cas_no": "1327-53-3",
+        "category": "剧毒化学品",
+        "summary": "三氧化二砷（CAS 1327-53-3），剧毒化学品，按剧毒目录管理。"
+      }
+    },
+    {
+      "name": "砷化氢",
+      "type": "Chemical",
+      "aliases": [
+        "砷化三氢",
+        "胂"
+      ],
+      "attributes": {
+        "cas_no": "7784-42-1",
+        "category": "剧毒化学品",
+        "summary": "砷化氢（CAS 7784-42-1），剧毒化学品，按剧毒目录管理。"
+      }
+    },
+    {
+      "name": "磷化氢",
+      "type": "Chemical",
+      "aliases": [
+        "磷化三氢",
+        "膦"
+      ],
+      "attributes": {
+        "cas_no": "7803-51-2",
+        "category": "剧毒化学品",
+        "summary": "磷化氢（CAS 7803-51-2），剧毒化学品，按剧毒目录管理。"
+      }
+    },
+    {
+      "name": "氯",
+      "type": "Chemical",
+      "aliases": [
+        "液氯",
+        "氯气"
+      ],
+      "attributes": {
+        "cas_no": "7782-50-5",
+        "category": "剧毒化学品",
+        "summary": "氯（CAS 7782-50-5），剧毒化学品，按剧毒目录管理。"
+      }
+    },
+    {
+      "name": "硫化氢",
+      "type": "Chemical",
+      "aliases": [],
+      "attributes": {
+        "cas_no": "7783-06-4",
+        "category": "危险化学品",
+        "summary": "硫化氢（CAS 7783-06-4），危险化学品。"
+      }
+    },
+    {
+      "name": "二氧化硫",
+      "type": "Chemical",
+      "aliases": [
+        "亚硫酸酐"
+      ],
+      "attributes": {
+        "cas_no": "7446-09-5",
+        "category": "危险化学品",
+        "summary": "二氧化硫（CAS 7446-09-5），危险化学品。"
+      }
+    },
+    {
+      "name": "苯",
+      "type": "Chemical",
+      "aliases": [
+        "纯苯"
+      ],
+      "attributes": {
+        "cas_no": "71-43-2",
+        "category": "危险化学品",
+        "summary": "苯（CAS 71-43-2），危险化学品。"
+      }
+    },
+    {
+      "name": "甲苯",
+      "type": "Chemical",
+      "aliases": [
+        "甲基苯",
+        "苯基甲烷"
+      ],
+      "attributes": {
+        "cas_no": "108-88-3",
+        "category": "危险化学品",
+        "summary": "甲苯（CAS 108-88-3），危险化学品。"
+      }
+    },
+    {
+      "name": "氢氧化钠",
+      "type": "Chemical",
+      "aliases": [
+        "苛性钠",
+        "烧碱"
+      ],
+      "attributes": {
+        "cas_no": "1310-73-2",
+        "category": "危险化学品",
+        "summary": "氢氧化钠（CAS 1310-73-2），危险化学品。"
+      }
+    },
+    {
+      "name": "硫酸",
+      "type": "Chemical",
+      "aliases": [],
+      "attributes": {
+        "cas_no": "7664-93-9",
+        "category": "危险化学品",
+        "summary": "硫酸（CAS 7664-93-9），危险化学品。"
+      }
+    },
+    {
+      "name": "盐酸",
+      "type": "Chemical",
+      "aliases": [
+        "氢氯酸"
+      ],
+      "attributes": {
+        "cas_no": "7647-01-0",
+        "category": "危险化学品",
+        "summary": "盐酸（CAS 7647-01-0），危险化学品。"
+      }
+    },
+    {
+      "name": "硝酸",
+      "type": "Chemical",
+      "aliases": [],
+      "attributes": {
+        "cas_no": "7697-37-2",
+        "category": "危险化学品",
+        "summary": "硝酸（CAS 7697-37-2），危险化学品。"
+      }
+    },
+    {
+      "name": "阿片",
+      "type": "Chemical",
+      "aliases": [
+        "鸦片"
+      ],
+      "attributes": {
+        "cas_no": "8008-60-4",
+        "category": "危险化学品",
+        "summary": "阿片（CAS 8008-60-4），危险化学品。"
+      }
+    },
+    {
+      "name": "5-氨基-1,3,3-三甲基环己甲胺",
+      "type": "Chemical",
+      "aliases": [
+        "异佛尔酮二胺",
+        "3,3,5-三甲基-4,6-二氨基-2-烯环己酮",
+        "1-氨基-3-氨基甲基-3,5,5-三甲基环己烷"
+      ],
+      "attributes": {
+        "cas_no": "2855-13-2",
+        "category": "危险化学品",
+        "summary": "5-氨基-1,3,3-三甲基环己甲胺（CAS 2855-13-2），危险化学品。"
+      }
+    }
+  ]
+}
