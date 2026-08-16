@@ -1,0 +1,69 @@
+# ========== Python ==========
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# ========== 环境变量（含密钥，一律不提交） ==========
+# 注意：`*.env.*` 会匹配 `.env.example`，需显式取反保留模板
+.env
+.env.local
+*.env.local
+.env.*
+!.env.example
+
+# ========== 日志 ==========
+logs/*.log
+
+# ========== 数据与中间产物（保留占位 .gitkeep） ==========
+# 原始数据：目录结构与占位文件入库，爬取产物（raw/structured/state）一律不入库
+_001_clawler/data/*
+!_001_clawler/data/.gitkeep
+# 先取反目录本身，内部 .gitkeep 的取反才会生效
+!_001_clawler/data/regulations/
+!_001_clawler/data/accidents/
+!_001_clawler/data/internal_docs/
+!_001_clawler/data/govlaws/
+!_001_clawler/data/chemicals/
+# 有价值的人类可读文档保留入库（OVERVIEW.md 为 organize_data 生成的数据清单）
+!_001_clawler/data/OVERVIEW.md
+!_001_clawler/data/README.md
+_001_clawler/data/regulations/*
+!_001_clawler/data/regulations/.gitkeep
+_001_clawler/data/accidents/*
+!_001_clawler/data/accidents/.gitkeep
+_001_clawler/data/internal_docs/*
+!_001_clawler/data/internal_docs/.gitkeep
+_001_clawler/data/govlaws/*
+!_001_clawler/data/govlaws/.gitkeep
+_001_clawler/data/chemicals/*
+!_001_clawler/data/chemicals/.gitkeep
+
+# 抽取结果
+_002_extract_information/output/*
+!_002_extract_information/output/.gitkeep
+
+# 图库导出 / FAISS 索引
+_003_create_neo4j_database/storage/*
+!_003_create_neo4j_database/storage/.gitkeep
+
+# 微调数据集与训练产物
+_007_fine_tune/datasets/*
+!_007_fine_tune/datasets/.gitkeep
+_007_fine_tune/runs/
+
+# 模型权重（走 scripts/download_models.py 下载，不入库）
+models/*
+!models/.gitkeep
+
+# 临时文件
+tmp/
+
+# ========== 开发工具 ==========
+.idea/
+.vscode/
+*.swp
