@@ -1,7 +1,7 @@
 [
   {
     "name": "甲醇",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "木醇",
       "木精"
@@ -15,7 +15,7 @@
   },
   {
     "name": "乙醇[无水]",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "无水酒精"
     ],
@@ -28,7 +28,7 @@
   },
   {
     "name": "甲醛溶液",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "福尔马林溶液"
     ],
@@ -41,7 +41,7 @@
   },
   {
     "name": "氨",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "液氨",
       "氨气"
@@ -55,7 +55,7 @@
   },
   {
     "name": "一氧化碳",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [],
     "attributes": {
       "cas_no": "630-08-0",
@@ -66,7 +66,7 @@
   },
   {
     "name": "氰化钾",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "山奈钾"
     ],
@@ -79,7 +79,7 @@
   },
   {
     "name": "三氧化二砷",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "白砒",
       "砒霜",
@@ -94,7 +94,7 @@
   },
   {
     "name": "砷化氢",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "砷化三氢",
       "胂"
@@ -108,7 +108,7 @@
   },
   {
     "name": "磷化氢",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "磷化三氢",
       "膦"
@@ -122,7 +122,7 @@
   },
   {
     "name": "氯",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "液氯",
       "氯气"
@@ -136,7 +136,7 @@
   },
   {
     "name": "硫化氢",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [],
     "attributes": {
       "cas_no": "7783-06-4",
@@ -147,7 +147,7 @@
   },
   {
     "name": "二氧化硫",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "亚硫酸酐"
     ],
@@ -160,7 +160,7 @@
   },
   {
     "name": "苯",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "纯苯"
     ],
@@ -173,7 +173,7 @@
   },
   {
     "name": "甲苯",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "甲基苯",
       "苯基甲烷"
@@ -187,7 +187,7 @@
   },
   {
     "name": "氢氧化钠",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "苛性钠",
       "烧碱"
@@ -201,7 +201,7 @@
   },
   {
     "name": "硫酸",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [],
     "attributes": {
       "cas_no": "7664-93-9",
@@ -212,7 +212,7 @@
   },
   {
     "name": "盐酸",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "氢氯酸"
     ],
@@ -225,7 +225,7 @@
   },
   {
     "name": "硝酸",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [],
     "attributes": {
       "cas_no": "7697-37-2",
@@ -236,7 +236,7 @@
   },
   {
     "name": "阿片",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "鸦片"
     ],
@@ -249,7 +249,7 @@
   },
   {
     "name": "5-氨基-1,3,3-三甲基环己甲胺",
-    "type": "Chemical",
+    "type": "Material",
     "aliases": [
       "异佛尔酮二胺",
       "3,3,5-三甲基-4,6-二氨基-2-烯环己酮",

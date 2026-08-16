@@ -1,0 +1,71 @@
+# 化工安全生产合规智能体 —— Docker 一键编排（可选交付）
+#
+# 快速体验（默认示例数据模式，无需先建图）：
+#   docker compose up -d --build
+#   前端 http://127.0.0.1:8501   后端 API 文档 http://127.0.0.1:8000/docs
+#
+# 完整数据模式（用完整图库 + 全量索引）：
+#   1) 改 api 服务的 USE_SAMPLE_DATA=false
+#   2) 把完整数据导入 Neo4j（示例数据也可导入，30 节点）：
+#        docker compose run --rm api python -m _003_create_neo4j_database.graph_importer
+#   3) 重建索引：docker compose run --rm api python -m _003_create_neo4j_database.faiss_indexer
+#
+# 详见 docs/DEPLOYMENT.md
+
+services:
+  neo4j:
+    image: neo4j:4.4-community
+    container_name: chemistry-neo4j
+    ports:
+      - "7687:7687"   # Bolt
+      - "7474:7474"   # Browser
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:-please-change-me}"
+      NEO4J_dbms_memory_pagecache_size: "512m"
+      NEO4J_dbms_memory_heap_max__size: "1G"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474/ || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  api:
+    build: .
+    image: chemistry-graph:latest
+    container_name: chemistry-api
+    command: ["uvicorn", "_005_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    env_file: .env
+    environment:
+      NEO4J_URI: "bolt://neo4j:7687"     # 容器内连 Neo4j 服务名
+      USE_SAMPLE_DATA: "true"            # 示例数据模式（改 false 走完整数据）
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro                       # 模型权重（download_models 产物）
+      - ./sample_data:/app/sample_data:ro             # 示例数据
+      - ./_003_create_neo4j_database/storage:/app/_003_create_neo4j_database/storage  # 索引/元数据
+    depends_on:
+      neo4j:
+        condition: service_healthy
+
+  streamlit:
+    build: .
+    image: chemistry-graph:latest
+    container_name: chemistry-ui
+    command: ["streamlit", "run", "_006_streamlit/app.py",
+              "--server.port", "8501", "--server.address", "0.0.0.0"]
+    env_file: .env
+    environment:
+      API_BASE: "http://api:8000"        # 容器内前端访问后端服务名
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+volumes:
+  neo4j_data:
+  neo4j_logs:

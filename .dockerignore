@@ -1,0 +1,25 @@
+# 构建上下文瘦身：大体积数据/模型/密钥不进镜像（运行时以卷挂载或 .env 注入）
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+
+# 数据与中间产物
+_001_clawler/data/
+_002_extract_information/output/
+_003_create_neo4j_database/storage/
+_007_fine_tune/datasets/
+_007_fine_tune/runs/
+
+# 模型权重（卷挂载）
+models/
+
+# 运行期/临时
+tmp/
+logs/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+tests/
+docs/

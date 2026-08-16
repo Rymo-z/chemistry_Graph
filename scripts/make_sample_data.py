@@ -93,7 +93,7 @@ def _chemical_extract_entities(chemicals: list[dict]) -> list[dict]:
         toxic = bool(c.get("is_toxic"))
         entities.append({
             "name": c.get("name", ""),
-            "type": "Chemical",
+            "type": "Material",  # 与 _002_extract_information.schema.EntityType 对齐
             "aliases": c.get("aliases") or [],
             "attributes": {
                 "cas_no": c.get("cas_no", ""),
