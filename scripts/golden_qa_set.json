@@ -27,7 +27,7 @@
   {
     "id": "chem_benzene",
     "question": "苯的CAS号是多少？它有什么别名？",
-    "ground_truth": "苯的CAS号是71-43-2，别名是安息油。"
+    "ground_truth": "苯的CAS号是71-43-2，别名是纯苯。"
   },
   {
     "id": "reg_hazardous_chem_regs",

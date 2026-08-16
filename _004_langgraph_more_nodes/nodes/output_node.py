@@ -92,7 +92,7 @@ def output_node(state: AgentState) -> AgentState:
     """汇总并写回 output / sources / metadata。
 
     流式模式（`state["stream"]` 为真且为 QA 意图）下，把「标题前缀 →
-    LLM 答案增量 → 检索路径 → 来源」依次写入 stream writer，由 /chat/stream
+    LLM 答案增量 → 来源」依次写入 stream writer，由 /chat/stream
     通过 `stream_mode="custom"` 转成 SSE 的 token 事件。
     """
     intent = state.get("intent") or "qa"
@@ -166,12 +166,6 @@ def output_node(state: AgentState) -> AgentState:
                 sections.append(body)
             else:
                 sections.append(_synthesize_qa_answer(state.get("question") or "", evidence_lines))
-            retr_line = "**检索路径**：图谱命中 {} 条 + 向量命中 {} 条（并行混合检索）".format(
-                len(graph_result), len(rag_results)
-            )
-            sections.append(retr_line)
-            if stream_writer is not None:
-                stream_writer({"type": "token", "content": "\n\n" + retr_line})
         else:
             sections.append(
                 "未检索到直接相关的法规条目。\n"

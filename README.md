@@ -128,8 +128,8 @@ python scripts/build_eval_dataset.py   # 跑真实链路生成数据集（手标
 python scripts/eval_ragas.py           # 跑指标 → docs/eval/ragas_report.md
 ```
 
-首轮结果（示例模式 14 条）：faithfulness 0.80 · context_recall 0.64 · context_precision 0.64 · answer_relevancy 0.56。
-**核心发现**：索引内（化学品/法规）检索 precision/recall 全 1.0，索引外（作业票）全 0.0——示例模式的作业票问答是结构性盲区，需完整数据模式覆盖。详见 [docs/eval/README.md](docs/eval/README.md)。
+当前结果（示例模式 14 条）：faithfulness 0.90 · context_precision 1.00 · context_recall 1.00 · answer_relevancy 0.79。
+对比首轮（faithfulness 0.80 / precision 0.64 / recall 0.64）：修复了作业票实体未入索引的结构性盲区（作业票问答 precision/recall 0.0 → 1.0）、移除了答案中的「检索路径」调试行、并按权威目录校准了苯的别名真值。详见 [docs/eval/README.md](docs/eval/README.md)。
 
 ## ⚙️ 关键设计
 

@@ -5,7 +5,7 @@
 - `chemicals/chemicals.jsonl`：危化品样例（官方目录 schema，含剧毒标记）
 - `regulations.jsonl`：法规元数据 + 摘要（**不含全文**，版权归发布机关）
 - `work_permits.json`：GB 30871-2022 八大特殊作业完整副本
-- `extract/`：mini 抽取结果（实体结构，离线建索引/图导入用）
+- `extract/`：mini 抽取结果（化学品/法规/作业票实体，离线建索引/图导入用）
 - `faiss/`：FAISS 种子索引（RAG 检索直接加载，无需 Neo4j）
 
 在 `.env` 设 `USE_SAMPLE_DATA=true` 后启动服务即用。完整数据请运行 `scripts/rebuild_pipeline.py`。

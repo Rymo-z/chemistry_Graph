@@ -128,6 +128,42 @@ def _record_extract_entities(records: list[dict]) -> list[dict]:
     return entities
 
 
+def _permit_extract_entities(permits: list[dict]) -> list[dict]:
+    """八大特殊作业 → 检索实体（进 FAISS，覆盖分级/有效期/气体分析等问答点）。"""
+    entities = []
+    for p in permits:
+        grading = p.get("grading") or {}
+        requirements = p.get("requirements") or {}
+        approval = p.get("approval_flow") or {}
+        summary_parts: list[str] = []
+        if p.get("definition"):
+            summary_parts.append(f"定义：{p['definition']}")
+        if grading.get("description"):
+            summary_parts.append(f"分级：{grading['description']}")
+        for lv in grading.get("levels") or []:
+            summary_parts.append(f"{lv.get('level')}级：{lv.get('conditions')}")
+        if p.get("permit_validity"):
+            summary_parts.append(f"作业票有效期：{p['permit_validity']}")
+        if requirements.get("gas_test_note"):
+            summary_parts.append(f"气体分析：{requirements['gas_test_note']}")
+        if requirements.get("guardian_note"):
+            summary_parts.append(f"监护要求：{requirements['guardian_note']}")
+        if approval.get("summary"):
+            summary_parts.append(f"审批流程：{approval['summary']}")
+        entities.append({
+            "name": p.get("work_type", ""),
+            "type": "Permit",
+            "aliases": p.get("aliases") or [],
+            "attributes": {
+                "std_no": "GB 30871-2022",
+                "clauses": p.get("clauses", ""),
+                "category": "特殊作业",
+                "summary": "。".join(x for x in summary_parts if x),
+            },
+        })
+    return entities
+
+
 def _write_jsonl(path: Path, records: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as fp:
@@ -150,10 +186,11 @@ def main() -> int:
     records = _load_jsonl(SRC_RECORDS)
     if not SRC_WORK_PERMITS.is_file():
         raise SystemExit(f"缺少真实数据源: {SRC_WORK_PERMITS}")
+    permits = json.loads(SRC_WORK_PERMITS.read_text(encoding="utf-8")).get("work_permits") or []
 
     picked_chemicals = _pick_chemicals(chemicals, N_CHEMICALS)
     picked_records = _pick_records(records, N_RECORDS)
-    print(f"[sample] 精选化学品 {len(picked_chemicals)} 种、法规 {len(picked_records)} 部")
+    print(f"[sample] 精选化学品 {len(picked_chemicals)} 种、法规 {len(picked_records)} 部、作业票 {len(permits)} 类")
 
     # 1. 数据文件
     _write_jsonl(CHEMICALS_OUT, picked_chemicals)
@@ -166,6 +203,7 @@ def main() -> int:
     for fname, payload in (
         ("chemicals.json", {"source": "sample_chemicals", "entities": _chemical_extract_entities(picked_chemicals)}),
         ("regulations.json", {"source": "sample_regulations", "entities": _record_extract_entities(picked_records)}),
+        ("permits.json", {"source": "sample_permits", "entities": _permit_extract_entities(permits)}),
     ):
         with open(EXTRACT_DIR / fname, "w", encoding="utf-8") as fp:
             json.dump(payload, fp, ensure_ascii=False, indent=2)
@@ -187,7 +225,7 @@ def main() -> int:
         "- `chemicals/chemicals.jsonl`：危化品样例（官方目录 schema，含剧毒标记）\n"
         "- `regulations.jsonl`：法规元数据 + 摘要（**不含全文**，版权归发布机关）\n"
         "- `work_permits.json`：GB 30871-2022 八大特殊作业完整副本\n"
-        "- `extract/`：mini 抽取结果（实体结构，离线建索引/图导入用）\n"
+        "- `extract/`：mini 抽取结果（化学品/法规/作业票实体，离线建索引/图导入用）\n"
         "- `faiss/`：FAISS 种子索引（RAG 检索直接加载，无需 Neo4j）\n\n"
         "在 `.env` 设 `USE_SAMPLE_DATA=true` 后启动服务即用。完整数据请运行 "
         "`scripts/rebuild_pipeline.py`。\n",

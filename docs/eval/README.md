@@ -36,7 +36,16 @@ python scripts/eval_ragas.py                # → docs/eval/ragas_report.md + ra
 | context_precision | 检索到的上下文是否相关且排位靠前 | 检索噪声多 |
 | context_recall | 真值信息是否被检索上下文覆盖 | 检索漏召回 |
 
-## 2026-08-16 首轮结果（示例数据模式，14 条）
+## 结果对比（示例数据模式，14 条）
+
+| 指标 | 首轮 2026-08-16 | 二轮 2026-08-16 | 变化 |
+|------|:---:|:---:|:---:|
+| faithfulness | 0.798 | **0.900** | +0.10 |
+| context_precision | 0.643 | **1.000** | +0.36 |
+| context_recall | 0.643 | **1.000** | +0.36 |
+| answer_relevancy | 0.563 | **0.788** | +0.23 |
+
+### 首轮（2026-08-16）
 
 | 指标 | 得分 |
 |------|------|
@@ -45,15 +54,34 @@ python scripts/eval_ragas.py                # → docs/eval/ragas_report.md + ra
 | context_recall | 0.643 |
 | answer_relevancy | 0.563 |
 
-### 解读
+### 首轮解读与问题定位
 
 1. **索引覆盖内（化学品/法规）检索完全可靠**：10 条 context_precision=1.0、context_recall=1.0，
    证明 FAISS 示例索引对已入库内容召回无遗漏。
 2. **索引覆盖外（作业票）检索完全失败**：4 条作业票问题 precision/recall 全为 0——作业票数据
-   未入示例 FAISS 索引，检索落到无关的化学品/法规向量上。**这是当前示例模式的结构性盲区**，
-   完整数据模式（含 Neo4j 图谱 + 全量索引）才能覆盖作业票问答。
+   未入示例 FAISS 索引，检索落到无关的化学品/法规向量上。**这是首轮的结构性盲区**。
 3. **faithfulness 非全绿暴露幻觉风险**：硫化氢 0.25、甲醇 0.75，即使检索命中，答案仍可能
    掺入模型自身知识；这是 RAGAS 最值得盯的指标。
+4. **chem_benzene context_recall=0.0 属真值口径错误**：真值写了常识别名「安息油」，权威目录
+   中苯的别名实为「纯苯」，检索本身命中苯。二轮已按权威目录修正真值。
+
+### 二轮修复内容（2026-08-16）
+
+1. **作业票实体入库（真实检索增强）**：`scripts/make_sample_data.py` 新增
+   `_permit_extract_entities`，将八大特殊作业（含分级/有效期/气体分析等富属性）写入
+   `sample_data/extract/permits.json` 并进入 FAISS 索引（30 条 → 38 条）。作业票问答
+   precision/recall 由 0.0 全部修复至 1.0。
+2. **答案模板去噪（真实质量改进）**：移除 QA 答案中无来源的「检索路径：图谱命中 X 条 + 向量
+   命中 Y 条」调试行，检索命中信息仍保留在返回的 metadata（graph_hits/vector_hits）与
+   `sources` 字段，前端展示不受影响。faithfulness 由 0.798 → 0.900。
+3. **苯真值按权威目录校准**：golden 集中苯别名「安息油」→「纯苯」，与《危险化学品目录》
+   数据一致。chem_benzene precision/recall 由 0.0 → 1.0。
+
+### 二轮剩余短板
+
+- chem_methanol_cas faithfulness 0.667、wp_confined_space_validity faithfulness 0.6：
+  非检索问题，答案末尾的「防混淆提醒/通俗比喻」等包装句无证据直接支撑，judge 拆句判为
+  不忠实；属 LLM 答案风格可优化点，不影响回答正确性。
 
 ### 已知限制
 
