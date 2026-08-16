@@ -1,0 +1,182 @@
+{
+  "config": {
+    "judge_llm": "deepseek-v4-flash",
+    "embedding": "D:\\Model_Pro_Train\\中医知识图谱\\06-安装包及模型\\bge-large-zh-v1.5"
+  },
+  "overall": {
+    "faithfulness": 0.7976,
+    "context_precision": 0.6429,
+    "context_recall": 0.6429,
+    "answer_relevancy": 0.5632
+  },
+  "per_sample": [
+    {
+      "id": "chem_methanol_cas",
+      "question": "甲醇的CAS号是多少？它还有哪些别名？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.75,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.4811
+      }
+    },
+    {
+      "id": "chem_ethanol_cas",
+      "question": "无水乙醇的CAS号是多少？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.75,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.9055
+      }
+    },
+    {
+      "id": "chem_potassium_cyanide",
+      "question": "氰化钾的别名是什么？CAS号是多少？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.9286
+      }
+    },
+    {
+      "id": "chem_hydrogen_sulfide",
+      "question": "硫化氢的CAS号是多少？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.25,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.5251
+      }
+    },
+    {
+      "id": "chem_ammonia",
+      "question": "氨有哪些别名？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.7871
+      }
+    },
+    {
+      "id": "chem_benzene",
+      "question": "苯的CAS号是多少？它有什么别名？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "answer_relevancy": 0.9178
+      }
+    },
+    {
+      "id": "reg_hazardous_chem_regs",
+      "question": "《危险化学品安全管理条例》是什么时候施行的？文号是什么？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.6667,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.8876
+      }
+    },
+    {
+      "id": "reg_accident_regs",
+      "question": "《生产安全事故报告和调查处理条例》是哪一年施行的？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.8168
+      }
+    },
+    {
+      "id": "reg_safety_law",
+      "question": "《中华人民共和国安全生产法》2021年修正版是什么时候施行的？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.8269
+      }
+    },
+    {
+      "id": "reg_fire_law",
+      "question": "《中华人民共和国消防法》是哪一年修正的？什么时候施行？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.8076
+      }
+    },
+    {
+      "id": "wp_hot_work_levels",
+      "question": "动火作业分为哪几个级别？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.7778,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "wp_hot_work_validity",
+      "question": "二级动火安全作业票的有效期是多长？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.8,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "wp_confined_space_validity",
+      "question": "受限空间安全作业票的有效期是多少？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.6,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "wp_gas_test_interval",
+      "question": "动火前气体分析取样时间与动火开始时间间隔有什么要求？",
+      "vector_hits": 5,
+      "graph_hits": 0,
+      "metrics": {
+        "faithfulness": 0.5714,
+        "context_precision": 0.0,
+        "context_recall": 0.0,
+        "answer_relevancy": 0.0
+      }
+    }
+  ]
+}

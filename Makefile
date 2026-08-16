@@ -2,7 +2,7 @@
 # Windows 无 make 时用 start.bat / scripts/ 下的脚本即可。
 PY      ?= python
 
-.PHONY: help setup deps download-models sample data start test docker-up docker-down clean
+.PHONY: help setup deps download-models sample data start test eval docker-up docker-down clean
 
 help: ## 显示可用命令
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  %-16s %s\n", $$1, $$2}'
@@ -28,6 +28,10 @@ start: ## 启动后端 API(8000) + 前端 Streamlit(8501)
 
 test: ## 运行全量测试
 	$(PY) -m pytest -q
+
+eval: ## RAGAS 效果评估（需隔离 venv，见 docs/eval/README.md）
+	$(PY) scripts/build_eval_dataset.py
+	$(PY) scripts/eval_ragas.py
 
 docker-up: ## Docker 一键起 Neo4j + API + Streamlit
 	docker compose up -d --build

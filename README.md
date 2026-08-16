@@ -54,6 +54,7 @@
 | `scripts/` | 工程脚本：模型下载 / 示例数据生成 / 数据链路一键重建 |
 | `sample_data/` | 示例数据集（20 化学品 + 10 法规 + 8 作业票 + FAISS 种子，开箱 demo） |
 | `tests/` | 单元测试（91 passed + 2 skipped） |
+| `docs/eval/` | RAGAS 效果评估：指标报告 + 说明（见下方「效果评估」） |
 
 ## 🚀 快速开始
 
@@ -117,6 +118,18 @@ docker compose run --rm api python -m _003_create_neo4j_database.graph_importer
 | `POST` | `/detect_hazard` | 图片识别隐患（multipart：`file` + 可选 `question` 表单字段） |
 | `POST` | `/check_permit` | 作业票审核，`{"permit_data": {...}}` |
 | `GET` | `/health` | 健康检查（含 Neo4j 连通状态） |
+
+## 🧪 效果评估（RAGAS）
+
+问答链路用 [RAGAS](https://docs.ragas.io/) 量化评估四项指标：**faithfulness（忠实度/幻觉）、answer_relevancy（相关度）、context_precision / context_recall（检索质量）**。
+
+```bash
+python scripts/build_eval_dataset.py   # 跑真实链路生成数据集（手标真值见 scripts/golden_qa_set.json）
+python scripts/eval_ragas.py           # 跑指标 → docs/eval/ragas_report.md
+```
+
+首轮结果（示例模式 14 条）：faithfulness 0.80 · context_recall 0.64 · context_precision 0.64 · answer_relevancy 0.56。
+**核心发现**：索引内（化学品/法规）检索 precision/recall 全 1.0，索引外（作业票）全 0.0——示例模式的作业票问答是结构性盲区，需完整数据模式覆盖。详见 [docs/eval/README.md](docs/eval/README.md)。
 
 ## ⚙️ 关键设计
 

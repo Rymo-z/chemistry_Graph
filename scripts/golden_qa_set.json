@@ -1,0 +1,72 @@
+[
+  {
+    "id": "chem_methanol_cas",
+    "question": "甲醇的CAS号是多少？它还有哪些别名？",
+    "ground_truth": "甲醇的CAS号是67-56-1，别名有木醇、木精。甲醇属于危险化学品。"
+  },
+  {
+    "id": "chem_ethanol_cas",
+    "question": "无水乙醇的CAS号是多少？",
+    "ground_truth": "乙醇[无水]的CAS号是64-17-5，别名是无水酒精。"
+  },
+  {
+    "id": "chem_potassium_cyanide",
+    "question": "氰化钾的别名是什么？CAS号是多少？",
+    "ground_truth": "氰化钾的别名是山奈钾，CAS号是151-50-8。"
+  },
+  {
+    "id": "chem_hydrogen_sulfide",
+    "question": "硫化氢的CAS号是多少？",
+    "ground_truth": "硫化氢的CAS号是7783-06-4。"
+  },
+  {
+    "id": "chem_ammonia",
+    "question": "氨有哪些别名？",
+    "ground_truth": "氨的别名有液氨、氨气，CAS号是7664-41-7。"
+  },
+  {
+    "id": "chem_benzene",
+    "question": "苯的CAS号是多少？它有什么别名？",
+    "ground_truth": "苯的CAS号是71-43-2，别名是安息油。"
+  },
+  {
+    "id": "reg_hazardous_chem_regs",
+    "question": "《危险化学品安全管理条例》是什么时候施行的？文号是什么？",
+    "ground_truth": "《危险化学品安全管理条例》2011年修订，2011-12-01 施行，国务院令第591号。"
+  },
+  {
+    "id": "reg_accident_regs",
+    "question": "《生产安全事故报告和调查处理条例》是哪一年施行的？",
+    "ground_truth": "《生产安全事故报告和调查处理条例》2007-06-01 施行，国务院令第493号。"
+  },
+  {
+    "id": "reg_safety_law",
+    "question": "《中华人民共和国安全生产法》2021年修正版是什么时候施行的？",
+    "ground_truth": "《中华人民共和国安全生产法》（2021年第三次修正）2021-09-01 施行，主席令第八十八号。"
+  },
+  {
+    "id": "reg_fire_law",
+    "question": "《中华人民共和国消防法》是哪一年修正的？什么时候施行？",
+    "ground_truth": "《中华人民共和国消防法》2021年修正，主席令第八十一号，2021-04-29 施行。"
+  },
+  {
+    "id": "wp_hot_work_levels",
+    "question": "动火作业分为哪几个级别？",
+    "ground_truth": "固定动火区外的动火作业分为特级、一级、二级三个级别。特级：在火灾爆炸危险场所处于运行状态下的生产装置设备、管道、储罐、容器等部位上进行的动火作业。一级：在火灾爆炸危险场所进行的除特级以外的动火作业。二级：除特级、一级动火作业以外的动火作业。"
+  },
+  {
+    "id": "wp_hot_work_validity",
+    "question": "二级动火安全作业票的有效期是多长？",
+    "ground_truth": "二级动火安全作业票有效期不应超过72小时。特级、一级动火安全作业票有效期不应超过8小时。"
+  },
+  {
+    "id": "wp_confined_space_validity",
+    "question": "受限空间安全作业票的有效期是多少？",
+    "ground_truth": "受限空间安全作业票有效期不应超过24小时。"
+  },
+  {
+    "id": "wp_gas_test_interval",
+    "question": "动火前气体分析取样时间与动火开始时间间隔有什么要求？",
+    "ground_truth": "动火前应进行气体分析，取样时间与动火开始时间间隔不应超过30分钟；特级/一级动火中断超30分钟、二级动火中断超60分钟应重新分析；每日动火前均应进行气体分析。"
+  }
+]
