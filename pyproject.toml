@@ -1,0 +1,27 @@
+# 工程元数据 + 工具配置。
+# 注意：运行依赖以 `requirements.txt` 为准（conda 环境友好），此处不重复声明，避免漂移。
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chemistry-graph"
+version = "0.1.0"
+description = "化工安全生产合规智能体：法规图谱 + RAG 问答 + CV 隐患识别 + 作业票审核"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "chemistry_Graph contributors" }]
+keywords = ["chemical-safety", "rag", "langgraph", "neo4j", "fastapi", "streamlit", "yolov8"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

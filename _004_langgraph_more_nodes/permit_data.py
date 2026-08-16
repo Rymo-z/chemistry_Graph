@@ -1,8 +1,10 @@
 """八大特殊作业数据加载/查询模块。
 
-数据源 `_001_clawler/data/work_permits.json`（依据 GB 30871-2022 全文整理，
-见 `_001_clawler/data/internal_docs/gb30871_2022_fulltext.txt`）。供
-permit_check_node 做数据驱动的作业票审核，也可供 QA 检索作业规范依据。
+数据源 `work_permits.json`（依据 GB 30871-2022 全文整理，见
+`_001_clawler/data/internal_docs/gb30871_2022_fulltext.txt`）。路径随配置走：
+默认 `_001_clawler/data/work_permits.json`，示例模式（USE_SAMPLE_DATA=1）指向
+`sample_data/work_permits.json`。供 permit_check_node 做数据驱动的作业票审核，
+也可供 QA 检索作业规范依据。
 """
 from __future__ import annotations
 
@@ -11,12 +13,9 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Optional
 
-_DATA_FILE = (
-    Path(__file__).resolve().parent.parent
-    / "_001_clawler"
-    / "data"
-    / "work_permits.json"
-)
+from common.config import settings
+
+_DATA_FILE: Path = settings.CLAWLER_DATA_DIR / "work_permits.json"
 
 
 @lru_cache(maxsize=1)

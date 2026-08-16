@@ -58,10 +58,22 @@ class Settings:
         self.API_BASE: str = os.getenv("API_BASE", "http://127.0.0.1:8000")
         self.APP_NAME: str = "化工安全生产合规智能体"
 
+        # ---------- 运行模式 ----------
+        # 示例数据模式（USE_SAMPLE_DATA=1）：数据/抽取/索引目录指向 sample_data/，
+        # 新用户 clone 后无需完整爬取数据即可体验 RAG demo（见 scripts/make_sample_data.py）。
+        self.USE_SAMPLE_DATA: bool = os.getenv("USE_SAMPLE_DATA", "false").lower() in (
+            "1", "true", "yes",
+        )
+
         # ---------- 目录路径 ----------
-        self.CLAWLER_DATA_DIR: Path = BASE_DIR / "_001_clawler" / "data"
-        self.EXTRACT_OUTPUT_DIR: Path = BASE_DIR / "_002_extract_information" / "output"
-        self.STORAGE_DIR: Path = BASE_DIR / "_003_create_neo4j_database" / "storage"
+        if self.USE_SAMPLE_DATA:
+            self.CLAWLER_DATA_DIR: Path = BASE_DIR / "sample_data"
+            self.EXTRACT_OUTPUT_DIR: Path = BASE_DIR / "sample_data" / "extract"
+            self.STORAGE_DIR: Path = BASE_DIR / "sample_data" / "faiss"
+        else:
+            self.CLAWLER_DATA_DIR: Path = BASE_DIR / "_001_clawler" / "data"
+            self.EXTRACT_OUTPUT_DIR: Path = BASE_DIR / "_002_extract_information" / "output"
+            self.STORAGE_DIR: Path = BASE_DIR / "_003_create_neo4j_database" / "storage"
         self.LOGS_DIR: Path = BASE_DIR / "logs"
         self.TMP_DIR: Path = BASE_DIR / "tmp"
 
